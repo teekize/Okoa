@@ -1,0 +1,228 @@
+<%- include('admin-header'); %>
+
+
+<!-- ==========================the main content area============================ -->
+<div class="container">
+  <div class="row my-4 py-4">
+    <div class="col-md-8">
+      <h3 class="text-white-50">Eugene Kwizera</h3>
+      <h5 class="text-white-50">Country <span class="text-white">🇰🇪 </span></h5>
+
+      <p class="text-white text-left font-weight-light">
+        Eugeen`s age is 16 years old. He came into the Country on 12/12/2012.
+        he fleed from the country beacuse of political instablity.
+      </p>
+
+      <h5 class="text-white-50">Admittion date : <span>12/12/2012</span></h5>
+    </div>
+
+    <div class="col-md-3">
+
+      <div class="btn-group" role="group" aria-label="Basic example">
+
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#supplies">
+            ASSIGN SUPPLIES
+          </button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#admit">
+            SCHOOL ADMISSION
+          </button>
+
+        </div>
+        <!-- <button class="btn-outline-primary" >
+                    <a href="#" class="btn btn-primary stretched-link">UPDATE    INFO</a></button>
+                <button><a href="#" class="btn btn-primary stretched-link">DELETE REFUGEE</a></button>
+
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#admit">ADMIT TO SCHOOL</button>
+
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#supplies">ASSIGN SUPPLIES</button> -->
+      </div>
+
+
+    </div>
+  </div>
+</div>
+<!-- ==================end of main content area================================= -->
+
+<!-- modal for signing in as admin -->
+
+<div class="modal" tabindex="-1" id="LOGIN">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">EMPLOYEE LOGIN FORM</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- login form for admin -->
+        <form>
+
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" aria-describedby="emailHelp">
+
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control">
+          </div>
+          <!-- <div class="form-group form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div> -->
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <!-- end of login form for admin -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end of modal for signing in as admin -->
+
+<!-- ============================================ -->
+<!-- ====modal for  enrolling refugee to classs====== -->
+<div class="modal" tabindex="-1" id="admit">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">SCHOOL ADMISSION</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- login form for admin -->
+        <form>
+
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="firstname">First name</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="firstname">Middle name</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="firstname">Last name</label>
+              <input type="text" class="form-control">
+            </div>
+
+          </div>
+
+          <div class="form-row">
+
+            <div class="form-group col-md-6">
+              <label for="exampleInputEmail1">SCHOOL</label>
+
+              <select id="inputState" class="form-control">
+                <option selected>Choosee...</option>
+                <option value="RICE">PRIMARY SCHOOL</option>
+                <option value="MAIZE-FLOUR">SECONDARY SCHOOL</option>
+                <option value="MILK">UNIVERSITY</option>
+                <option value="BEANS">ADULT CLASSES</option>
+                <option value="COOKING OIL">NUSERY</option>
+
+              </select>
+
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="exampleInputPassword1">Start date</label>
+
+              <input type="date">
+
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <!-- end of login form for admin -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====end modal for  enrolling refugee to classs====== -->
+
+<!-- ============================================ -->
+<!-- ====modal for  assigning refugee with supplies====== -->
+
+<div class="modal" tabindex="-1" id="supplies">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">SUPPLIES ASSIGNMENT FORM</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- supplies form -->
+        <form>
+
+          <div class="form-row">
+
+            <div class="form-group col-md-6">
+              <label for="exampleInputEmail1">Supplies</label>
+
+              <select id="inputState" class="form-control">
+                <option selected>Food supplies</option>
+                <option value="MAIZE-FLOUR">UNGA UGALI</option>
+                <option value="MILK">MILK</option>
+                <option value="BEANS">BEANS</option>
+                <option value="COOKING OIL">COOKING OIL</option>
+                <option value="RICE">RICE</option>
+              </select>
+
+            </div>
+            <div class="form-group col-md-6">
+              <label for="exampleInputPassword1">Quantity</label>
+
+              <select id="inputState" class="form-control">
+                <option selected>Quantity in Kgs</option>
+                <option value="1">1 kgs</option>
+                <option value="2">2 kgs</option>
+                <option value="3">3 kgs</option>
+                <option value="4">4 kgs</option>
+                <option value="5">5 ks</option>
+
+              </select>
+
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <!-- end of supplies form -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ====end modal for assigning refugee with supplies====== -->
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+</body>
+
+</html>

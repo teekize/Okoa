@@ -1,0 +1,19 @@
+<%- include('admin-header'); %>
+
+<% if(locals.unauthorized) {%>
+<h5>Hi there you need to sign up to be able to work</h5>
+
+<a href="/login">Login</a>
+<%} else {%>
+
+<!-- <h4>HI <%= locals.name %></h4> -->
+<button type="button" class="btn btn-primary">
+    Admin Logged In :<span class="badge badge-light"><%= locals.name %></span>
+    <span class="sr-only">unread messages</span>
+</button>
+
+
+<div class="alert alert-success" id="time" role="alert">
+    <p class="text-muted">Time: <a href="#" id="txt" class="alert-link"></a></p>
+</div>
+<%}%>

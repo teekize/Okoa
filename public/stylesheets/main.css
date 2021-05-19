@@ -1,0 +1,12 @@
+body{
+    
+    background: linear-gradient(darkblue,transparent),
+                url("/static/images/refugee.jpg") no-repeat center;
+    background-size: cover;
+    min-height: 750px;
+}
+
+a{
+   
+    text-decoration: none;
+}

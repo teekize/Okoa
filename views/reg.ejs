@@ -1,0 +1,150 @@
+<%- include('admin-header'); %>
+
+
+<!-- ==========================the main content area============================ -->
+<div class="container">
+  <form class="my-4 py-4" action="/admit/refugee" method="POST">
+
+    <!-- ========NAME GROUP============= -->
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="inputEmail4 " class="text-white-50">FIRST NAME</label>
+        <input type="email" class="form-control" id="inputEmail4">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputPassword4 " class="text-white-50">LAST NAME</label>
+        <input type="password" class="form-control" id="inputPassword4">
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="inputPassword4 " class="text-white-50">LAST NAME</label>
+        <input type="password" class="form-control" id="inputPassword4">
+      </div>
+    </div>
+    <!-- ========NAME GROUP============= -->
+
+    <!-- =====sex,age, marital status======== -->
+    <div class="form-row">
+
+      <div class="form-group col-md-4">
+        <label for="inputEmail4 " class="text-white-50">SEX</label>
+        <!-- <input type="email" class="form-control" id="inputEmail4"> -->
+        <select id="inputState" class="form-control">
+          <option selected>Choose...</option>
+          <option>MALE</option>
+          <option>FEMALE</option>
+          <!-- <option>DIVORCED</option> -->
+        </select>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputEmail4 " class="text-white-50">AGE</label>
+        <input type="email" class="form-control" id="inputEmail4">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputEmail4 " class="text-white-50">MARITAL STATUS</label>
+        <select id="inputState" class="form-control">
+          <option selected>Choose...</option>
+          <option>SINGLE</option>
+          <option>MARRIED</option>
+          <option>DIVORCED</option>
+        </select>
+      </div>
+
+    </div>
+
+    <!-- =========end sex, age, martial status======= -->
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputCity" class="text-white-50">NATIONALITY</label>
+        <select id="inputState" class="form-control">
+          <option selected>Choose...</option>
+          <option value="KENYA">🇰🇪</option>
+          <option value="UGANDA">🇺🇬</option>
+          <option value="TANZANIA">🇹🇿</option>
+          <option value="SOUTHSUDAN">🇸🇸</option>
+          <option value="SOMALIA">🇸🇴</option>
+
+        </select>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="inputCity" class="text-white-50">ASSIGN TENT</label>
+        <select id="inputState" class="form-control">
+          <option selected>Choose...</option>
+          <option>01</option>
+          <option>02</option>
+          <option>03</option>
+          <option>04</option>
+          <option>05</option>
+          <option>06</option>
+          <option>07</option>
+          <option>08</option>
+          <option>09</option>
+          <option>10</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-primary mx-auto mt-3">Register</button>
+  </form>
+</div>
+<!-- ==================end of main content area================================= -->
+
+<!-- modal for signing in as admin -->
+
+<div class="modal" tabindex="-1" id="LOGIN">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">EMPLOYEE LOGIN FORM</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- login form for admin -->
+        <form action="/admin/login" method="POST">
+
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1">
+          </div>
+          <!-- <div class="form-group form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div> -->
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <!-- end of login form for admin -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end of modal for signing in as admin -->
+
+
+
+
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+</body>
+
+</html>
