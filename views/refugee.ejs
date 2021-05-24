@@ -1,19 +1,55 @@
 <%- include('admin-header'); %>
 
 
+<script>
+  const refugee = {
+    id: ' <%= locals.id%>',
+    FirstName: "<%= locals.FirstName%>",
+    MiddleName: "<%= locals.MiddleName%>",
+    LastName: "<%= locals.LastName%>",
+    Sex: "<%= locals.Sex%>",
+    Age: "<%= locals.Age%>",
+    MaritalStatus: "<%= locals.MaritalStatus%>",
+    Nationality: " <%= locals.Nationality%>",
+    Tent: "<%= locals.Tent%>",
+
+    createdAt: "<%= locals.createdAt%>"
+  };
+
+  console.dir(refugee);
+
+  // fetch(`/supplies/${refugee.id.trim()}`)
+  //   .then(r => {
+
+  //     const l = r.json();
+  //     console.dir(l.results)
+  //   }
+  //   )
+  const countries = {
+    KENYA: "🇰🇪",
+    UGANDA: "🇺🇬",
+    TANZANIA: "🇹🇿",
+    SOUTHSUDAN: "🇸🇸",
+    SOMALIA: "🇸🇴"
+  }
+</script>
+
+
 <!-- ==========================the main content area============================ -->
 <div class="container">
   <div class="row my-4 py-4">
     <div class="col-md-8">
-      <h3 class="text-white-50">Eugene Kwizera</h3>
-      <h5 class="text-white-50">Country <span class="text-white">🇰🇪 </span></h5>
+      <h3 class="text-white-50"><%= locals.FirstName%></h3>
+      <h5 class="text-white-50">Country <span class="text-white"> <%= locals.Nationality%></span></h5>
 
       <p class="text-white text-left font-weight-light">
-        Eugeen`s age is 16 years old. He came into the Country on 12/12/2012.
-        he fleed from the country beacuse of political instablity.
+        <%= locals.FirstName%> age is <b><%= locals.Age%></b> years old. <br><b><%=locals.pronoun%></b> came into the
+        Country on
+        <%= locals.createdAt%>.
+        <%=locals.pronoun%> fleed from the country beacuse of political instablity.
       </p>
 
-      <h5 class="text-white-50">Admittion date : <span>12/12/2012</span></h5>
+      <h5 class="text-white-50">Admittion date : <span><%= locals.createdAt%></span></h5>
     </div>
 
     <div class="col-md-3">
@@ -30,61 +66,46 @@
 
         </div>
         <!-- <button class="btn-outline-primary" >
-                    <a href="#" class="btn btn-primary stretched-link">UPDATE    INFO</a></button>
-                <button><a href="#" class="btn btn-primary stretched-link">DELETE REFUGEE</a></button>
+              <a href="#" class="btn btn-primary stretched-link">UPDATE    INFO</a></button>
+            <button><a href="#" class="btn btn-primary stretched-link">DELETE REFUGEE</a></button>
 
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#admit">ADMIT TO SCHOOL</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#admit">ADMIT TO SCHOOL</button>
 
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#supplies">ASSIGN SUPPLIES</button> -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#supplies">ASSIGN SUPPLIES</button> -->
       </div>
 
 
     </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-sm-7">
+
+      <p id="supplies-content">
+
+      </p>
+      <ul id="supplies-list" class="list-group">
+
+      </ul>
+
+    </div>
+
+    <div class="col-sm-5">
+
+      <p id="school-content">
+
+      </p>
+      <ul id="school-list" class="list-group">
+
+      </ul>
+    </div>
+
   </div>
 </div>
 <!-- ==================end of main content area================================= -->
 
-<!-- modal for signing in as admin -->
 
-<div class="modal" tabindex="-1" id="LOGIN">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">EMPLOYEE LOGIN FORM</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <!-- login form for admin -->
-        <form>
-
-
-          <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" aria-describedby="emailHelp">
-
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control">
-          </div>
-          <!-- <div class="form-group form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Check me out</label>
-            </div> -->
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-        <!-- end of login form for admin -->
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-      </div>
-    </div>
-  </div>
-</div>
-<!-- end of modal for signing in as admin -->
 
 <!-- ============================================ -->
 <!-- ====modal for  enrolling refugee to classs====== -->
@@ -98,21 +119,21 @@
         </button>
       </div>
       <div class="modal-body">
-        <!-- login form for admin -->
-        <form>
+        <!-- for school admission -->
+        <form action="/school" method="POST">
 
           <div class="form-row">
             <div class="form-group col-md-4">
               <label for="firstname">First name</label>
-              <input type="text" class="form-control">
+              <input type="text" class="form-control" name="FirstName" value="<%= locals.FirstName%>">
             </div>
             <div class="form-group col-md-4">
               <label for="firstname">Middle name</label>
-              <input type="text" class="form-control">
+              <input type="text" class="form-control" name="MiddleName" value="<%= locals.MiddleName%>">
             </div>
             <div class="form-group col-md-4">
               <label for="firstname">Last name</label>
-              <input type="text" class="form-control">
+              <input type="text" class="form-control" name="LastName" value="<%= locals.LastName%>">
             </div>
 
           </div>
@@ -122,13 +143,13 @@
             <div class="form-group col-md-6">
               <label for="exampleInputEmail1">SCHOOL</label>
 
-              <select id="inputState" class="form-control">
+              <select id="inputState" class="form-control" name="SchoolType">
                 <option selected>Choosee...</option>
-                <option value="RICE">PRIMARY SCHOOL</option>
-                <option value="MAIZE-FLOUR">SECONDARY SCHOOL</option>
-                <option value="MILK">UNIVERSITY</option>
-                <option value="BEANS">ADULT CLASSES</option>
-                <option value="COOKING OIL">NUSERY</option>
+                <option value="primary">PRIMARY SCHOOL</option>
+                <option value="secondary">SECONDARY SCHOOL</option>
+                <option value="university">UNIVERSITY</option>
+                <option value="adultclasses">ADULT CLASSES</option>
+                <option value="nusery">NUSERY</option>
 
               </select>
 
@@ -137,8 +158,13 @@
             <div class="form-group col-md-6">
               <label for="exampleInputPassword1">Start date</label>
 
-              <input type="date">
+              <input type="date" name="StartDate">
 
+            </div>
+
+            <div class="form-group col-md-1">
+              <label for="firstname">ID</label>
+              <input type="text" class="form-control" name="refugeeid" value="<%= locals.id%>">
             </div>
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
@@ -169,14 +195,33 @@
       </div>
       <div class="modal-body">
         <!-- supplies form -->
-        <form>
+        <form action="/supplies" method="POST">
+
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="firstname">First name</label>
+              <input type="text" class="form-control" name="FirstName" value="<%= locals.FirstName%>">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="firstname">Middle name</label>
+              <input type="text" class="form-control" name="MiddleName" value="<%= locals.MiddleName%>">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="firstname">Last name</label>
+              <input type="text" class="form-control" name="LastName" value="<%= locals.LastName%>">
+            </div>
+
+
+          </div>
 
           <div class="form-row">
 
-            <div class="form-group col-md-6">
+
+
+            <div class=" form-group col-md-6">
               <label for="exampleInputEmail1">Supplies</label>
 
-              <select id="inputState" class="form-control">
+              <select id="inputState" class="form-control" name="Supplies">
                 <option selected>Food supplies</option>
                 <option value="MAIZE-FLOUR">UNGA UGALI</option>
                 <option value="MILK">MILK</option>
@@ -186,10 +231,10 @@
               </select>
 
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-5">
               <label for="exampleInputPassword1">Quantity</label>
 
-              <select id="inputState" class="form-control">
+              <select id="inputState" class="form-control" name="Quantity">
                 <option selected>Quantity in Kgs</option>
                 <option value="1">1 kgs</option>
                 <option value="2">2 kgs</option>
@@ -199,6 +244,11 @@
 
               </select>
 
+            </div>
+
+            <div class="form-group col-md-1">
+              <label for="firstname">ID</label>
+              <input type="text" class="form-control" name="refugeeid" value="<%= locals.id%>">
             </div>
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
@@ -215,7 +265,97 @@
 <!-- ====end modal for assigning refugee with supplies====== -->
 
 
+<script>
 
+  // const refugeeid
+  fetch(`/supplies/${refugee.id.trim()}`).then(data =>
+    data.json()
+  ).then(data => {
+
+    if (data.message) {
+      console.log(data)
+      displayContent("supplies-content", data.message, "");
+      console.log("ninalog data")
+
+    }
+    if (data.results) {
+
+      let supplies = {
+        type: "supplies",
+        quantity: "Quantity",
+        Supplies: " Supplies",
+        nameElement: "supplies-list"
+      }
+
+      data.results.forEach(element => {
+        console.log(element)
+        displayList(supplies, element, supplies.nameElement);
+      });
+    }
+
+
+  });
+
+  fetch(`/school/${refugee.id.trim()}`).then(data =>
+    data.json()
+  ).then(data => {
+
+    if (data.message) {
+      console.log(data)
+      displayContent("school-content", data.message, "");
+      console.log("ninalog data")
+
+    }
+    if (data.results) {
+
+      // console.log(data)
+
+      let school = {
+        type: "school",
+        nameSchool: "School Type",
+        start: " Start Date",
+        nameElement: "school-list"
+      }
+      // const name="school-content"
+      data.results.forEach(element => {
+        console.log(element)
+        displayList(school, element, school.nameElement);
+      });
+    }
+
+
+  });
+
+
+  function displayList(disc, content, name) {
+
+    const listel = document.getElementById(name);
+
+    const listitem = document.createElement("li");
+    listitem.className = "text-muted list-group-item list-group-item-info"
+    listitem.innerHTML = disc.type === "school" ? `<span> ${disc.nameSchool}: ${content.SchoolType} </span>  ${disc.start}: ${content.StartDate}` : `<span> ${disc.quantity}: ${content.Quantity} </span>  ${disc.Supplies}: ${content.Supplies}`;
+
+    listel.append(listitem);
+
+
+
+  }
+
+
+  function displayContent(name, message = "", display = "") {
+
+    const element = document.getElementById(name);
+
+
+    element.innerText(message);
+    element.style.display = display;
+  }
+
+
+
+
+
+</script>
 
 
 
