@@ -75,6 +75,25 @@ module.exports = (sequelize) => {
                 notEmpty: true
             }
         },
+
+        disable: {
+            type: Sequelize.STRING,
+            allowNull: false,
+            validate: {
+                len: [1, 50],
+                notEmpty: true
+            }
+        },
+
+        reasonfordisplacement: {
+            type: Sequelize.STRING,
+            allowNull: false,
+            validate: {
+                len: [1, 50],
+                notEmpty: true
+            }
+        },
+
         Nationality: {
             type: Sequelize.STRING,
             allowNull: false,

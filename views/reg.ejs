@@ -1,4 +1,5 @@
-<%- include('admin-header'); %>
+<!DOCTYPE html>
+<%- include('admin-refugee-header'); %>
 
 
 <!-- ==========================the main content area============================ -->
@@ -47,6 +48,33 @@
           <option value="single">SINGLE</option>
           <option value="married">MARRIED</option>
           <option value="divorced">DIVORCED</option>
+        </select>
+      </div>
+
+    </div>
+
+    <div class="form-row">
+
+      <div class="form-group col-md-6">
+        <label for="inputEmail4 " class="text-white-50">Person With Diasbility</label>
+        <!-- <input type="email" class="form-control" id="inputEmail4"> -->
+        <select id="inputState" class="form-control" name="disable">
+          <option selected>Choose...</option>
+          <option value="male">yes</option>
+          <option value="female">no</option>
+          <!-- <option>DIVORCED</option> -->
+        </select>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="inputEmail4 " class="text-white-50">Reason for displacement</label>
+        <select id="inputState" class="form-control" name="reasonfordisplacement">
+          <option selected>Choose...</option>
+          <option value="Internally displaced">Internally displaced</option>
+          <option value="Born at camp">Born at camp</option>
+          <option value="Political instability">Political instability</option>
+          <option value="War">War</option>
+          <option value="Ethnic conflict">Ethnic conflict</option>
         </select>
       </div>
 

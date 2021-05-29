@@ -10,167 +10,71 @@
 
 <div class="container">
 
-    <div class="row">
-        <div class="col-sm-6">
-            <button type="button" class="btn btn-primary">
-                Admin Logged In :<span class="badge badge-light"><%= locals.name %></span>
-                <span class="sr-only">unread messages</span>
-            </button>
+
+    <!-- this row will be mainly for displaying rows  -->
+
+    <div class="row mt-4">
+
+        <div class="col-sm-4 mb-2 mx-auto  p-4 bg-warning">
+
+            <form class="mx-auto" action="/refugee-homepage" method="GET">
+                <button type="submit" class="btn btn-outline btn-lg p-3">
+
+                    REFUGEES
+
+                </button>
+            </form>
 
         </div>
 
-        <div class="col-sm-6">
-            <div class="alert alert-info mx-auto" id="time" role="alert">
-                <p class="text-muted"><a href="#" id="txt" class="alert-link"></a></p>
-            </div>
+        <div class="col-sm-4 mb-2 mx-auto p-4 bg-danger">
+
+            <form class="mx-auto" action="/tents-homepage" method="GET">
+                <button type="submit" class="btn btn-outline btn-lg p-3">
+
+                    TENTS
+
+                </button>
+            </form>
+
         </div>
+
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-sm-4 mt-2 mx-auto p-4 bg-secondary">
+
+            <form class="mx-auto" action="/supplies-homepage" method="GET">
+                <button type="submit" class="btn btn-outline btn-lg p-3">
+
+                    SUPPLIES
+
+                </button>
+            </form>
+        </div>
+
+        <div class="col-sm-4 mt-2 mx-auto p-4 bg-success">
+
+
+            <form class="mx-auto" action="/stats-homepage" method="GET">
+                <button type="submit" class="btn btn-outline btn-lg p-3">
+
+                    STATISTICS
+
+                </button>
+            </form>
+        </div>
+
+
     </div>
 </div>
+
+
 
 
 
 <%}%>
 
-
-<!--  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script> -->
-<script type="text/javascript">
-
-    window.onload = () => {
-        refugees();
-        school();
-        supplies();
-        startTime()
-    }
-
-    const days = {
-        0: "Sunday",
-        1: "Monday",
-        2: "Tuesday",
-        3: "Wednesday",
-        4: "Thursday",
-        5: "Friday",
-        6: "Saturday"
-    }
-
-    function startTime() {
-        var today = new Date();
-        var h = today.getHours();
-        var m = today.getMinutes();
-        var s = today.getSeconds();
-        var n = today.getDay();
-        m = checkTime(m);
-        s = checkTime(s);
-        document.getElementById('txt').innerHTML = "    " + days[n] + " " + h + ":" + m + ":" + s;
-        var t = setTimeout(function () { startTime() }, 500);
-    }
-
-    function checkTime(i) {
-        if (i < 10) { i = "0" + i };  // add zero in front of numbers < 10
-        return i;
-    }
-    function getData(country) {
-        fetch(`/stats/${country}`)
-            .then(response => response.json())
-            .then(data => {
-
-                console.log(typeof data);
-                return data;
-            }
-            );
-    }
-
-    function refugees() {
-
-
-        var chart = new CanvasJS.Chart("chartContainer", {
-            title: {
-                text: "refugees by country"
-            },
-            data: [
-                {
-                    // Change type to "doughnut", "line", "splineArea", etc.
-                    type: "column",
-                    dataPoints: [
-                        { label: "kenya", y: getData("kenya") + 1 },
-                        { label: "uganda", y: getData("uganda") + 1 },
-                        { label: "tanzania", y: getData("tanzania") + 1 },
-                        { label: "somalia", y: 15 },
-                        { label: "south-sudan", y: getData("SOUTHSUDAN") + 1 }
-                    ]
-                }
-            ]
-        });
-        chart.render();
-    }
-
-    function supplies() {
-        var chart = new CanvasJS.Chart("supplies", {
-            title: {
-                text: "supples by country refugee"
-            },
-            data: [
-                {
-                    // Change type to "doughnut", "line", "splineArea", etc.
-                    type: "column",
-                    dataPoints: [
-                        { label: "kenya", y: 0 },
-                        { label: "uganda", y: 1 },
-                        { label: "tanzania", y: 25 },
-                        { label: "somalia", y: 0 },
-                        { label: "South-Sudan", y: 0 }
-                    ]
-                }
-            ]
-        });
-        chart.render();
-    }
-
-    function school() {
-        var chart = new CanvasJS.Chart("school", {
-            title: {
-                text: "No. of Refugees  enrolled in School "
-            },
-            data: [
-                {
-                    // Change type to "doughnut", "line", "splineArea", etc.
-                    type: "column",
-                    dataPoints: [
-                        { label: "kenya", y: 0 },
-                        { label: "uganda", y: 15 },
-                        { label: "tanzania", y: 25 },
-                        { label: "somalia", y: 30 },
-                        { label: "South-Sudan", y: 28 }
-                    ]
-                }
-            ]
-        });
-        chart.render();
-    }
-</script>
-
-<div class="container">
-    <div class="row">
-
-        <div class="col-sm-6">
-            <div id="chartContainer" style="height: 300px; width: 100%;" class="container"></div>
-        </div>
-
-        <div class="col-sm-6">
-            <div id="supplies" style="height: 300px; width: 100%;" class="container"></div>
-        </div>
-
-    </div>
-
-    <div class="row">
-
-        <div class="col-sm-8">
-            <div id="school" style="height: 300px; width: 100%;" class="container my-3"></div>
-        </div>
-
-        
-
-    </div>
-</div>
 
 
 

@@ -1,4 +1,4 @@
-<%- include('admin-header'); %>
+<%- include('admin-refugee-header'); %>
 
 
 <script>
@@ -39,8 +39,8 @@
 <div class="container">
   <div class="row my-4 py-4">
     <div class="col-md-8">
-      <h3 class="text-white-50"><%= locals.FirstName%></h3>
-      <h5 class="text-white-50">Country <span class="text-white"> <%= locals.Nationality%></span></h5>
+      <h3><%= locals.FirstName%></h3>
+      <h5>Country <span class="text-white"> <%= locals.Nationality%></span></h5>
 
       <p class="text-white text-left font-weight-light">
         <%= locals.FirstName%> age is <b><%= locals.Age%></b> years old. <br><b><%=locals.pronoun%></b> came into the
@@ -49,7 +49,7 @@
         <%=locals.pronoun%> fleed from the country beacuse of political instablity.
       </p>
 
-      <h5 class="text-white-50">Admittion date : <span><%= locals.createdAt%></span></h5>
+      <h5>Admittion date : <span><%= locals.createdAt%></span></h5>
     </div>
 
     <div class="col-md-3">
@@ -63,6 +63,8 @@
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#admit">
             SCHOOL ADMISSION
           </button>
+          <button type="button" data-toggle="modal" class="btn btn-success" data-target="#<%= locals.FirstName%>">Edit
+            Refugee</button>
 
         </div>
         <!-- <button class="btn-outline-primary" >
@@ -180,6 +182,124 @@
 </div>
 
 <!-- ====end modal for  enrolling refugee to classs====== -->
+
+
+
+
+<div class="modal" tabindex="-1" id="<%= locals.FirstName%>">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">EDIT REFUGEE Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <form class="my-4 py-4" action="/refugee-edit/" method="POST">
+
+          <!-- ========NAME GROUP============= -->
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="inputEmail4 ">FIRST NAME</label>
+              <input type="text" class="form-control" id="inputEmail4" name="FirstName" value="<%= locals.FirstName%> ">
+            </div>
+
+            <div class="form-group col-md-4">
+              <label for="inputPassword4 ">MIDDLE NAME</label>
+              <input type="text" class="form-control" id="inputPassword4" name="MiddleName"
+                value="<%= locals.MiddleName%>">
+            </div>
+
+            <div class="form-group col-md-4">
+              <label for="inputPassword4 ">LAST NAME</label>
+              <input type="text" class="form-control" id="inputPassword4" name="LastName" value="<%= locals.LastName%>">
+            </div>
+          </div>
+          <!-- ========NAME GROUP============= -->
+
+          <!-- =====sex,age, marital status======== -->
+          <div class="form-row">
+
+            <div class="form-group col-md-4">
+              <label for="inputEmail4 ">SEX</label>
+              <!-- <input type="email" class="form-control" id="inputEmail4"> -->
+              <select id="inputState" class="form-control" name="Sex" value="<%= locals.Sex%>">
+                <option selected><%= locals.Sex%></option>
+                <option value="male">MALE</option>
+                <option value="female">FEMALE</option>
+                <!-- <option>DIVORCED</option> -->
+              </select>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="inputEmail4 ">AGE</label>
+              <input type="text" name="Age" class="form-control" value="<%= locals.Age%>" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="inputEmail4 ">MARITAL STATUS</label>
+
+              <input type="text" name="MaritalStatus" class="form-control" value="<%= locals.MaritalStatus%>" required>
+            </div>
+
+          </div>
+
+          <div class="form-row">
+
+            <div class="form-group col-md-6">
+              <label for="inputEmail4 ">Person With Diasbility</label>
+              <!-- <input type="email" class="form-control" id="inputEmail4"> -->
+              <input type="text" name="disable" class="form-control" value="<%= locals.disable%>" required>
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="inputEmail4 ">Reason for displacement</label>
+              <input type="text" name="reasonfordisplacement" class="form-control"
+                value="<%= locals.reasonfordisplacement%>" required>
+            </div>
+
+          </div>
+
+          <!-- =========end sex, age, martial status======= -->
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputCity">NATIONALITY</label>
+              <select id="inputState" class="form-control" name="Nationality" value="<%= locals.Nationality%>">
+                <option selected><%= locals.Nationality%></option>
+                <option value="KENYA">🇰🇪</option>
+                <option value="UGANDA">🇺🇬</option>
+                <option value="TANZANIA">🇹🇿</option>
+                <option value="SOUTHSUDAN">🇸🇸</option>
+                <option value="SOMALIA">🇸🇴</option>
+
+              </select>
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="inputCity">ASSIGN TENT</label>
+              <input type="text" name="Tent" class="form-control" value="<%= locals.Tent%>" required>
+            </div>
+
+            <div class="form-group col-md-1">
+              <label for="inputCity">ID</label>
+              <input type="text" name="id" class="form-control" value="<%= locals.id%>" readonly>
+            </div>
+
+
+            <button type="submit" class="btn btn-primary mx-auto mt-3">Save Changes</button>
+        </form>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <!-- ============================================ -->
 <!-- ====modal for  assigning refugee with supplies====== -->

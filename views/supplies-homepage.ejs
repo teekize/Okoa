@@ -1,0 +1,182 @@
+<%- include('admin-supplies-header'); %>
+
+
+<div class="container">
+
+    <%if (resData.length ===0){%>
+    <tr>
+        <h4 class="display-3 text-secondary">TABLE IS EMPTY</h4>
+    </tr>
+    <%} else {%>
+
+    <h3 class="display-5 text-secondary">LIST OF ALL supplies</h3>
+
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">#ID</th>
+                <th scope="col">Item</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Delete</th>
+                <th scope="col">Edit</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <% resData.forEach(supplies =>{%>
+            <tr>
+                <th scope="row"><%=supplies.id%></th>
+                <td><%=supplies.Item%></td>
+                <td><%=supplies.Quantity%></td>
+                <td>
+                    <a class="btn btn-warning" href="/supplies-delete/<%=supplies.id%>">Delete</a>
+                </td>
+
+                <td>
+                    <button type="button" class="btn btn-success" data-toggle="modal"
+                        data-target="#<%=supplies.Item + 1%>">
+                        Edit Supplies
+                    </button>
+
+                    <div class="modal" tabindex="-1" id="<%=supplies.Item + 1%>">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title text-muted">Edit SUPPLIES</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- for school admission -->
+                                    <form action="/supplies-edit/" method="POST">
+
+
+                                        <div class="form-row">
+                                            <div class=" form-group col-md-5">
+                                                <label for="Item" class="text-white-50">ITEM</label>
+
+                                                <input type="text" name="Item" class="form-control"
+                                                    value="<%=supplies.Item%>" required>
+
+                                            </div>
+
+                                            <div class=" form-group col-md-4">
+                                                <label for="Quantity" class="text-white-50">Quantity</label>
+
+                                                <input type="text" name="Quantity" class="form-control"
+                                                    value="<%=supplies.Quantity%>" required>
+
+                                            </div>
+
+                                            <div class=" form-group col-md-2">
+                                                <label for="id" class="text-white-50">id</label>
+
+                                                <input type="text" name="id" class="form-control"
+                                                    value="<%=supplies.id%>" readonly>
+
+                                            </div>
+
+
+                                        </div>
+
+
+                                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                                    </form>
+
+                                    <!-- end of login form for admin -->
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
+
+            <%})%>
+        </tbody>
+
+    </table>
+    <% } %>
+
+</div>
+<!-- ======================modal===================== -->
+<div class="modal" tabindex="-1" id="admit">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">ADD SUPPLIES</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- for school admission -->
+                <form action="/supplies-addition" method="POST">
+
+
+                    <div class="form-row">
+                        <div class=" form-group col-md-6">
+                            <label for="exampleInputEmail1">ITEM</label>
+
+                            <select id="inputState" class="form-control" name="Item">
+                                <option selected>Food supplies</option>
+                                <option value="RICE">RICE</option>
+                                <option value="BEANS">BEANS</option>
+                                <option value="NDENGU">NDENGU</option>
+                                <option value="ONIONS">ONIONS</option>
+                                <option value="COOKINGOIL">COOKING OIL</option>
+                                <option value="SOAP">SOAP</option>
+                            </select>
+
+                        </div>
+
+                        <div class="form-group col-md-5">
+                            <label for="exampleInputPassword1">Quantity</label>
+
+                            <select id="inputState" class="form-control" name="Quantity">
+                                <option selected>Quantity</option>
+                                <option value="1">1 </option>
+                                <option value="2">2 </option>
+                                <option value="3">3 </option>
+                                <option value="4">4 </option>
+                                <option value="5">5 </option>
+
+                            </select>
+
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                <!-- end of login form for admin -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================= -->
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

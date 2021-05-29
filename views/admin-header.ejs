@@ -29,23 +29,65 @@
             <div class="collapse navbar-collapse justify-content-center" id="admin">
                 <div class="navbar-nav">
 
-                    <!-- <form action="/logout" method="POST">
-                        <button type="submit" class="btn btn-primary">Log out</button>
-                    </form> -->
-                    <!-- <a class="nav-link text-white" href="#about">About</a> -->
-                    <a class="nav-link text-white" href="/admit/refugee">Admit Refugee</a>
-                    <a class="nav-link text-white" href="/refugee">View Refugees</a>
-                    <!-- <form action="/refugee/all" method="GET">
-                        <button type="submit" class="btn btn-primary">View Refugees</button>
-                    </form> -->
-                </div>
 
-                <form class="form-inline my-2 my-lg-0 justify-content-end" action="/refugee-search" method="GET">
-                    <input name="id-refugee" required=true class="form-control mr-sm-1" type="search"
-                        placeholder="Search by refugee ID" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
+                    <div class="container">
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <button type="button" class="btn btn-primary">
+                                    Admin Logged In :<span class="badge badge-light"><%= locals.name %></span>
+                                    <span class="sr-only">unread messages</span>
+                                </button>
+
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="alert alert-info mx-auto" id="time" role="alert">
+                                    <p class="text-muted"><a href="#" id="txt" class="alert-link"></a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-        </div>
     </nav>
     <!-- end of navigation bar -->
+
+
+
+    <!--  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script> -->
+    <script type="text/javascript">
+
+        window.onload = () => {
+            startTime()
+        }
+
+        const days = {
+            0: "Sunday",
+            1: "Monday",
+            2: "Tuesday",
+            3: "Wednesday",
+            4: "Thursday",
+            5: "Friday",
+            6: "Saturday"
+        }
+
+        function startTime() {
+            var today = new Date();
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+            var n = today.getDay();
+            m = checkTime(m);
+            s = checkTime(s);
+            document.getElementById('txt').innerHTML = "    " + days[n] + " " + h + ":" + m + ":" + s;
+            var t = setTimeout(function () { startTime() }, 500);
+        }
+
+        function checkTime(i) {
+            if (i < 10) { i = "0" + i };  // add zero in front of numbers < 10
+            return i;
+        }
+
+    </script>

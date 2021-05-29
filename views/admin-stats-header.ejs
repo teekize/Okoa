@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://printjs-4de6.kxcdn.com/print.min.css
+        ">
+    <link rel="stylesheet" href="../static/stylesheets/main.css">
+
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+
+    <title>Okoa Refugee</title>
+</head>
+
+<body>
+
+
+    <!-- the navigation bar  -->
+
+    <nav class="navbar navbar-expand-lg navbar-light  p-4" style="background-color: darkblue;">
+        <div class="container">
+            <a class="navbar-brand text-white" href="/homepage">Okoa Camp</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#admin"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="admin">
+                <div class="navbar-nav">
+
+                    <!-- <form action="/logout" method="POST">
+                        <button type="submit" class="btn btn-primary">Log out</button>
+                    </form> -->
+                    <!-- <a class="nav-link text-white" href="#about">About</a> -->
+                    <!-- <a class="nav-link text-white" href="#">View stats</a> -->
+                    <button class=" btn btn-outline text-white"" type=" button" onclick="printJS('statistics', 'html')">
+                        Print Stats
+                    </button>
+
+                    <button class=" btn btn-outline" type="button">
+
+                        <a class="nav-link text-white" href="/homepage">BACK HOMEPAGE</a>
+                    </button>
+
+                    <!-- <form action="/refugee/all" method="GET">
+                        <button type="submit" class="btn btn-primary">View Refugees</button>
+                    </form> -->
+                </div>
+
+                <!-- <form class="form-inline my-2 my-lg-0 justify-content-end" action="/refugee-search" method="GET">
+                    <input name="id-refugee" required=true class="form-control mr-sm-1" type="search"
+                        placeholder="Search Tent" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form> -->
+            </div>
+        </div>
+    </nav>
+    <!-- end of navigation bar -->

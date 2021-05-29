@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<%- include('admin-header');%>
+<%- include('admin-refugee-header'); %>
 
 
 <!-- ==========================the main content area============================ -->
@@ -39,10 +39,18 @@
         <th scope="col">Last</th>
         <th scope="col">Country</th>
         <th scope="col">Link</th>
+        <th scope="col">Delete</th>
+
+
       </tr>
     </thead>
 
     <tbody>
+      <%if (resData.length ===0){%>
+
+      <h4 class="display-3">TABLE IS EMPTY</h4>
+
+      <%}%>
 
       <% resData.forEach(refugee =>{%>
       <tr>
@@ -50,7 +58,10 @@
         <td><%=refugee.FirstName%></td>
         <td><%=refugee.LastName%></td>
         <td><%=refugee.Nationality%></td>
-        <td> <a href="/refugee/<%=refugee.id%>" class="btn-info">View <%=refugee.FirstName%></a></td>
+        <td> <a href="/refugee/<%=refugee.id%>" class="btn-success">View <%=refugee.FirstName%></a></td>
+        <td> <a href="/refugee-delete/<%=refugee.id%>" class="btn-warning">Delete</a></td>
+
+
       </tr>
 
       <%})%>
